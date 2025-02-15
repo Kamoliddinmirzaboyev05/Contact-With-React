@@ -85,23 +85,22 @@ function App() {
                       phone !== "" &&
                       email !== "" &&
                       data !== ""
-                    ) { if (editing) {
+                    ) {
+                      if (editing) {
                         contacts.map((contact) => {
                           console.log(contact.id == editingId);
-                          
+
                           if (contact.id == editingId) {
                             contact.name = name;
                             contact.surname = surname;
                             contact.phone = phone;
                             contact.email = email;
                             contact.data = data;
-                            console.log("Qo'shildi");
-                            setEditing(false)
+                            setEditing(false);
                           }
                         });
                       } else {
                         writeDB();
-                        console.log(contacts);
                       }
                     } else {
                       alert("Malumotlarni to'liq kiriting");
