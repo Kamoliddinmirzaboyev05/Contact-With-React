@@ -221,7 +221,7 @@ function App() {
                           onClick={() => {
                             setEditing(true);
                             editContact(contacts.indexOf(contact));
-                            setEditingId(contact``.id);
+                            setEditingId(contact.id);
                           }}
                           className="fa-solid fa-pencil"
                         ></i>
