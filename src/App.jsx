@@ -57,11 +57,11 @@ function App() {
         <nav>
           <div className="container">
             <button className="codes">
-              Websayt kodlari <img src="/public/code.svg" alt="" />
+              Websayt kodlari <img src="/code.svg" alt="" />
             </button>
             <h2 className="title">Kontaktlar</h2>
             <button className="dark">
-              <img src="/public/tun.svg" alt="" />
+              <img src="/tun.svg" alt="" />
               Tun rejimi
             </button>
           </div>
@@ -74,7 +74,7 @@ function App() {
             <h2 className="title">Kontakt yaratish</h2>
             <div className="card">
               <div className="card-img">
-                <img src="/public/user.svg" alt="" />
+                <img src="/user.svg" alt="" />
               </div>
               <div className="card-input">
                 <form
@@ -115,7 +115,7 @@ function App() {
                   action="#"
                 >
                   <div className="inputData">
-                    <img src="/public/name.svg" className="col" alt="" />
+                    <img src="/name.svg" className="col" alt="" />
                     <input
                       value={name}
                       onInput={(e) => {
@@ -127,7 +127,7 @@ function App() {
                     />
                   </div>
                   <div className="inputData">
-                    <img src="/public/familiya.svg" className="col" alt="" />
+                    <img src="/familiya.svg" className="col" alt="" />
                     <input
                       value={surname}
                       onInput={(e) => {
@@ -139,7 +139,7 @@ function App() {
                     />
                   </div>
                   <div className="inputData">
-                    <img src="/public/phone.svg" className="col" alt="" />
+                    <img src="/phone.svg" className="col" alt="" />
                     <input
                       value={phone}
                       onInput={(e) => {
@@ -151,7 +151,7 @@ function App() {
                     />
                   </div>
                   <div className="inputData">
-                    <img src="/public/pochta.svg" className="col" alt="" />
+                    <img src="/pochta.svg" className="col" alt="" />
                     <input
                       value={email}
                       onInput={(e) => {
@@ -163,7 +163,7 @@ function App() {
                     />
                   </div>
                   <div className="inputData">
-                    <img src="/public/data.svg" className="col" alt="" />
+                    <img src="/data.svg" className="col" alt="" />
                     <input
                       value={data}
                       onInput={(e) => {
@@ -189,7 +189,7 @@ function App() {
             <div className="block">
               <div className="block-head">
                 <p>Kamoliddin Mirzaboyev</p>
-                <img src="/public/head.svg" alt="" />
+                <img src="/head.svg" alt="" />
               </div>
               <div className="search">
                 <i className="fas fa-search col searchBtn"></i>
@@ -201,7 +201,7 @@ function App() {
                   return (
                     <div className="contact">
                       <div className="data">
-                        <img src="/public/users.svg" alt="" />
+                        <img src="/users.svg" alt="" />
                         <div className="contact-data">
                           <h2>
                             {contact.name} {contact.surname}
