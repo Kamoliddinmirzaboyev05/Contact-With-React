@@ -15,7 +15,7 @@ function App() {
       ? JSON.parse(localStorage.getItem("dark"))
       : false
   );
-
+  const [copyData, setCopyData] = useState(contacts);
   // o'zgaruvchilar
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -36,7 +36,7 @@ function App() {
     setContacts([...contacts, obj]);
     localStorage.setItem("contacts", JSON.stringify(contacts));
   };
-
+  
   // Delete Contact
   const deleteContact = (id) => {
     const newContacts = contacts.filter((contact, index) => {
@@ -45,7 +45,7 @@ function App() {
     setContacts(newContacts);
     localStorage.setItem("contacts", JSON.stringify(newContacts));
   };
-
+  
   // Edit Contact
   const [editing, setEditing] = useState(false);
   const [editingId, setEditingId] = useState();
@@ -59,20 +59,15 @@ function App() {
     setEmail(newContacts[0].email);
     setData(newContacts[0].data);
   };
-
+  
   // Search function
-  const [copyData, setCopyData] = useState(contacts);
   const search = (text) => {
+    setCopyData(contacts);    
     const newContacts = copyData.filter((contact) => {
-      return (
-        contact.name.toLowerCase().includes(text.toLowerCase()) ||
-        contact.surname.toLowerCase().includes(text.toLowerCase()) ||
-        contact.phone.toLowerCase().includes(text.toLowerCase()) ||
-        contact.email.toLowerCase().includes(text.toLowerCase()) ||
-        contact.data.toLowerCase().includes(text.toLowerCase())
-      );
+      return contact.name.toLowerCase().includes(text.toLowerCase());
     });
     setCopyData(newContacts);
+
   };
   return (
     <div className={dark ? "darkTheme" : "whiteTheme"}>
@@ -245,6 +240,7 @@ function App() {
                 <input
                   onInput={(e) => {
                     search(e.target.value);
+                    console.log(e.target.value);
                   }}
                   type="text"
                   placeholder="Kontakt qidirish"
@@ -252,7 +248,7 @@ function App() {
                 <p className="all">Barchasi</p>
               </div>
               <div className="contacts">
-                {contacts.map((contact) => {
+                {copyData.map((contact) => {
                   return (
                     <div className="contact">
                       <div className="data">
@@ -283,7 +279,8 @@ function App() {
                       </div>
                     </div>
                   );
-                })}
+                })
+                }
               </div>
             </div>
           </div>
