@@ -8,6 +8,14 @@ function App() {
       ? JSON.parse(localStorage.getItem("contacts"))
       : []
   );
+  // Dark mode function
+
+  const [dark, setDark] = useState(
+    localStorage.getItem("dark")
+      ? JSON.parse(localStorage.getItem("dark"))
+      : false
+  );
+
   // o'zgaruvchilar
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -51,17 +59,39 @@ function App() {
     setEmail(newContacts[0].email);
     setData(newContacts[0].data);
   };
+
+  // Search function
+  const [copyData, setCopyData] = useState(contacts);
+  const search = (text) => {
+    const newContacts = copyData.filter((contact) => {
+      return (
+        contact.name.toLowerCase().includes(text.toLowerCase()) ||
+        contact.surname.toLowerCase().includes(text.toLowerCase()) ||
+        contact.phone.toLowerCase().includes(text.toLowerCase()) ||
+        contact.email.toLowerCase().includes(text.toLowerCase()) ||
+        contact.data.toLowerCase().includes(text.toLowerCase())
+      );
+    });
+    setCopyData(newContacts);
+  };
   return (
-    <>
+    <div className={dark ? "darkTheme" : "whiteTheme"}>
       <header>
         <nav>
           <div className="container">
             <button className="codes">
-              Websayt kodlari <img src="/code.svg" alt="" />
+              Websayt kodlari{" "}
+              <img src={!dark ? "/code.svg" : "/whitecode.svg"} alt="" />
             </button>
             <h2 className="title">Kontaktlar</h2>
-            <button className="dark">
-              <img src="/tun.svg" alt="" />
+            <button
+              onClick={() => {
+                setDark(!dark);
+                localStorage.setItem("dark", !dark);
+              }}
+              className="dark"
+            >
+              <img src={!dark ? "/tun.svg" : "/sun.svg"} alt="" />
               Tun rejimi
             </button>
           </div>
@@ -114,7 +144,11 @@ function App() {
                   action="#"
                 >
                   <div className="inputData">
-                    <img src="/name.svg" className="col" alt="" />
+                    <img
+                      src={!dark ? "/name.svg" : "/whitename.svg"}
+                      className="col"
+                      alt=""
+                    />
                     <input
                       value={name}
                       onInput={(e) => {
@@ -126,7 +160,11 @@ function App() {
                     />
                   </div>
                   <div className="inputData">
-                    <img src="/familiya.svg" className="col" alt="" />
+                    <img
+                      src={!dark ? "/familiya.svg" : "/namefam.svg"}
+                      className="col"
+                      alt=""
+                    />
                     <input
                       value={surname}
                       onInput={(e) => {
@@ -138,7 +176,11 @@ function App() {
                     />
                   </div>
                   <div className="inputData">
-                    <img src="/phone.svg" className="col" alt="" />
+                    <img
+                      src={!dark ? "/phone.svg" : "/whitephone.svg"}
+                      className="col"
+                      alt=""
+                    />
                     <input
                       value={phone}
                       onInput={(e) => {
@@ -150,7 +192,11 @@ function App() {
                     />
                   </div>
                   <div className="inputData">
-                    <img src="/pochta.svg" className="col" alt="" />
+                    <img
+                      src={!dark ? "/pochta.svg" : "/whitemail.svg"}
+                      className="col"
+                      alt=""
+                    />
                     <input
                       value={email}
                       onInput={(e) => {
@@ -162,7 +208,11 @@ function App() {
                     />
                   </div>
                   <div className="inputData">
-                    <img src="/data.svg" className="col" alt="" />
+                    <img
+                      src={!dark ? "/data.svg" : "/whitedata.svg"}
+                      className="col"
+                      alt=""
+                    />
                     <input
                       value={data}
                       onInput={(e) => {
@@ -192,7 +242,13 @@ function App() {
               </div>
               <div className="search">
                 <i className="fas fa-search col searchBtn"></i>
-                <input type="text" placeholder="Kontakt qidirish" />
+                <input
+                  onInput={(e) => {
+                    search(e.target.value);
+                  }}
+                  type="text"
+                  placeholder="Kontakt qidirish"
+                />
                 <p className="all">Barchasi</p>
               </div>
               <div className="contacts">
@@ -233,7 +289,7 @@ function App() {
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 }
 

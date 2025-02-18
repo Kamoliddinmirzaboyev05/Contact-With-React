@@ -12,8 +12,18 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+.darkTheme {
+  background-color: #263148;
+}
+.darkTheme .container {
+  color: white;
+}
 nav {
   background-color: #f6f9fa;
+}
+.darkTheme nav {
+  background-color: #394867;
+  color: white;
 }
 nav .container {
   padding: 10px 0;
@@ -32,10 +42,14 @@ nav .container {
   border: 1px solid #394867;
   padding: 4px 8px;
 }
-
+.darkTheme .codes,
+.darkTheme .dark {
+  border: 1px solid white;
+  color: white;
+}
 main .container {
   padding: 20px 0;
-  padding-bottom: 25 + px;
+  padding-bottom: 25px;
   display: flex;
   align-items: start;
   justify-content: space-between;
@@ -49,6 +63,22 @@ main .container {
 }
 .card {
   position: relative;
+}
+.darkTheme .block {
+  background-color: #263148;
+}
+.darkTheme form {
+  background-color: #2e3a54;
+}
+.darkTheme form .inputData {
+  border: 2px solid white;
+  color: white;
+}
+.darkTheme form .inputData input {
+  color: white;
+}
+.darkTheme form .inputData input::placeholder {
+  color: white;
 }
 .black {
   color: black !important;
@@ -169,6 +199,9 @@ form {
   outline: none;
   background-color: transparent;
   padding: 4px 8px;
+}
+.darkTheme .search input {
+  color: white;
 }
 .all {
   border-left: 2px solid #394867;
